@@ -1,7 +1,7 @@
 /**
  * 탑재 장비
  */
-class Payload {
+export class Payload {
     weight: number;
     constructor(weight: number) {
         this.weight = weight;
@@ -11,7 +11,7 @@ class Payload {
 /**
  * 엔진
  */
-class Engine {
+export class Engine {
     thrust: number;
     constructor(thrust: number) {
         this.thrust = thrust;
@@ -21,7 +21,7 @@ class Engine {
 /**
  * 스테이지, 단계
  */
-class Stage {
+export class Stage {
     engines: Engine[];
     constructor(engines: Engine[]) {
         this.engines = engines;
@@ -38,12 +38,12 @@ class Stage {
 /**
  * 로켓 인터페이스
  */
-interface Rocket {
+export interface Rocket {
     payload: Payload;
     stages: Stage[];
 }
 
-class BaseRocket implements Rocket {
+export class BaseRocket implements Rocket {
     payload: Payload;
     stages: Stage[];
 }
@@ -51,7 +51,7 @@ class BaseRocket implements Rocket {
 /**
  * 로켓 팩토리, Creator
  */
-class RocketFactory {
+export class RocketFactory {
     /**
      * 팩토리 메서드
      */
@@ -87,30 +87,30 @@ class RocketFactory {
 
 // 이제 좀 더 확장된 기능이 있는 Rocket
 
-class Satelite extends Payload {
+export class Satelite extends Payload {
     constructor(public id: string) {
         super(200);
     }
 }
 
-class FirstStage extends Stage {
+export class FirstStage extends Stage {
     constructor() {
         super([new Engine(1000), new Engine(1000), new Engine(1000), new Engine(1000)]);
     }
 }
 
-class SecondStage extends Stage {
+export class SecondStage extends Stage {
     constructor() {
         super([new Engine(1000)]);
     }
 }
 
-type FreightRocketStage = [FirstStage, SecondStage];
+export type FreightRocketStage = [FirstStage, SecondStage];
 
 /**
  * Payload와 Stage가 변경된 Rocket을 생성하는 Factory
  */
-class FreightRocketFactory extends RocketFactory {
+export class FreightRocketFactory extends RocketFactory {
     /**
      *오버 라이드
      */
